@@ -23,9 +23,6 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     @Autowired
     public SearchPage searchPage;
 
-    @Autowired
-    public LoginPage loginPage;
-
     @BeforeMethod(alwaysRun = true)
     public void createTestContext(ITestContext context) {
         context.setAttribute("driver", driver.getDriver());

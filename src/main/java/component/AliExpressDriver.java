@@ -43,7 +43,7 @@ public class AliExpressDriver extends ApplicationContextConfig {
             default:
                 System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\drivers\\chromedriver.exe");
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.setBinary("src\\main\\resources\\drivers\\chromedriver.exe");
+             //   chromeOptions.setBinary("src\\main\\resources\\drivers\\chromedriver.exe");
                 chromeOptions.setHeadless(headless);
                 chromeOptions.addArguments("--start-maximized");
 //                chromeOptions.addArguments("--incognito");

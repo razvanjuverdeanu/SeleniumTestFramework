@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static utils.Constants.MEDIUM_TIMEOUT;
-import static utils.Constants.TIMEOUT;
+import static utils.Constants.*;
 
 @Component
 public class BasePage {
@@ -127,7 +126,7 @@ public class BasePage {
 
     @Step("Waiting for element {0}")
     public void waitVisibilityOFElementLocated(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver.getDriver(), TIMEOUT);
+        WebDriverWait wait = new WebDriverWait(driver.getDriver(), MEDIUM_TIMEOUT);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }

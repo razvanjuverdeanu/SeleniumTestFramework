@@ -47,7 +47,7 @@ public class SearchTests extends BaseTest {
 
         Collections.sort(productsPrice);
 
-        assertTrue(Double.parseDouble(MIN_PRICE) < productsPrice.get(0));
+        assertTrue(Double.parseDouble(MIN_PRICE) <= productsPrice.get(0), "Smallest price in the list is = " + productsPrice.get(0));
     }
 
     @Test

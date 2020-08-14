@@ -29,7 +29,7 @@ public class AliExpressDriver extends ApplicationContextConfig {
         switch (browser) {
 
             case "firefox":
-                System.setProperty("webdriver.gecko.driver", "src\\main\\resources\\drivers\\geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setHeadless(headless);
                 firefoxOptions.addArguments("--start-maximized");
@@ -41,9 +41,8 @@ public class AliExpressDriver extends ApplicationContextConfig {
             case "chrome":
 
             default:
-                System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\drivers\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
                 ChromeOptions chromeOptions = new ChromeOptions();
-             //   chromeOptions.setBinary("src\\main\\resources\\drivers\\chromedriver.exe");
                 chromeOptions.setHeadless(headless);
                 chromeOptions.addArguments("--start-maximized");
 //                chromeOptions.addArguments("--incognito");

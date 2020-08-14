@@ -3,6 +3,7 @@ package pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
@@ -62,7 +63,7 @@ public class SearchPage {
     @Step("Getting subcategories for the searched item")
     public List<String> getProductsPriceOnCurrentPage() {
         List<String> productsPrice = new ArrayList<>();
-        basePage.waitVisibilityOFElementLocated(sideBar);
+        //basePage.waitVisibilityOFElementLocated(sideBar);
         scrollToPagination();
         List<WebElement> webElements = basePage.findElements(productPrice);
         if (webElements.size() > 0) {
@@ -120,10 +121,15 @@ public class SearchPage {
 
     @Step("Closing coupon")
     public void closeSearchCoupon() {
-        basePage.waitVisibilityOFElementLocated(sideBar);
-        if (basePage.isElementPresent(couponDismiss)) {
-            basePage.clickElement(couponDismiss);
+        try {
+            basePage.waitVisibilityOFElementLocated(couponDismiss);
+            if (basePage.isElementPresent(couponDismiss)) {
+                basePage.clickElement(couponDismiss);
+            }
+        }catch (TimeoutException t){
+            System.out.println("Coupon not visible");
         }
+
     }
 
     @Step("Getting products number from current page")

@@ -2,6 +2,7 @@ package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,8 +32,13 @@ public class HomePage {
 
     @Step("Closing coupon pop-up")
     public void closeCoupon() {
-        if (basePage.isElementPresent(couponDismiss)) {
-            basePage.clickElement(couponDismiss);
+        try {
+            basePage.waitVisibilityOFElementLocated(couponDismiss);
+            if (basePage.isElementPresent(couponDismiss)) {
+                basePage.clickElement(couponDismiss);
+            }
+        }catch (TimeoutException t){
+            System.out.println("Pop-up not present");
         }
     }
 

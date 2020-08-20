@@ -26,10 +26,24 @@ public class AliExpressDriver extends ApplicationContextConfig {
     private String baseUrl;
 
     public AliExpressDriver(@Value("${browser}") String browser, @Value("${headless}") boolean headless) {
+        if (System.getProperty("os.name").toLowerCase().contains("win")){
+            if(browser.equalsIgnoreCase("firefox")){
+                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/win/geckodriver.exe");
+            }else if(browser.equalsIgnoreCase("chrome")){
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/win/chromedriver.exe");
+            }
+        }
+        if (System.getProperty("os.name").toLowerCase().contains("linux")){
+            if(browser.equalsIgnoreCase("firefox")){
+                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/linux/geckodriver");
+            }else if(browser.equalsIgnoreCase("chrome")){
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/linux/chromedriver");
+            }
+        }
         switch (browser) {
 
             case "firefox":
-                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setHeadless(headless);
                 firefoxOptions.addArguments("--start-maximized");
@@ -41,7 +55,7 @@ public class AliExpressDriver extends ApplicationContextConfig {
             case "chrome":
 
             default:
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setHeadless(headless);
                 chromeOptions.addArguments("--start-maximized");

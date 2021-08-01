@@ -1,7 +1,0 @@
-utils\TestListener.class
-pages\BasePage.class
-component\AliExpressDriver.class
-utils\Constants.class
-utils\Helpers.class
-config\ApplicationContextConfig.class
-pages\HomePage.class
